@@ -116,7 +116,7 @@ public class MethodPractice {
     public static double averageOfEvensOnly( int a, int b, int c, int d, int e ) {
         List<Integer> numbers = new ArrayList<>();
         numbers.add(a);
-        numbers.add(d);
+        numbers.add(b);
         numbers.add(c);
         numbers.add(d);
         numbers.add(e);
@@ -128,12 +128,8 @@ public class MethodPractice {
                 if(isEven(number)){
                     count++;
                     evens += number;
-                    //System.out.println("Evens sum: "+ evens +"\nCount: "+count+ "index" +i);
                 }
-            }else{
-                i++;
             }
-
         }
         if (count > 0) {
             double average = (double) evens / count;
@@ -158,69 +154,63 @@ public class MethodPractice {
         }return answer;
     }
 
-
-    // WRITE A METHOD FROM SCRATCH
-    //
-    // Write a method called computeMealTotal that takes two
-    // arguments, an int meal which is the cost of a meal, and a
-    // double tip which represents the tip percentage one would add to
-    // the bill.
-    // The method must return a double which equals how much should be
-    // paid.
-    //
-    // int meal must be greater than 0
-    // double tip must be 0 or greater and .7 or less (no tips over 70%)
-    // If either number is invalid, return -1;
-    //
-    // Don't forget to use the public static modifiers
-
-
-
-
+    /**
+     * Computes the total cost of the meal including tip.
+     * @param meal must be larger than 0
+     * @param tip  double must be less than .7
+     * @return cost of the meal plus tip or -1 if meal or tip do not meet criteria.
+     */
+    public static double computeMealTotal(int meal , double tip){
+        if(meal > 0 && tip <= 0.7){
+            return meal * (1+tip);
+        }else{
+            return -1;
+        }
+    }
 
     // This code tests your program's completeness.
     public static void main(String[] args) {
         int numCorrect = 0;
 
-        if( findLargest(1, 2, 3) == 3 ) { numCorrect++; System.out.println("1");}
-        if( findLargest(4,-5, 2) == 4 ) { numCorrect++; System.out.println("2");}
-        if( findLargest(0, 7, 5) == 7 ) { numCorrect++; System.out.println("3");}
+        if( findLargest(1, 2, 3) == 3 ) { numCorrect++; }
+        if( findLargest(4,-5, 2) == 4 ) { numCorrect++; }
+        if( findLargest(0, 7, 5) == 7 ) { numCorrect++; }
 
-        if( !isEven(3) ) { numCorrect++; System.out.println("4");}
-        if( isEven(-2) ) { numCorrect++; System.out.println("5");}
-        if( isEven(0) ) { numCorrect++; System.out.println("6");}
+        if( !isEven(3) ) { numCorrect++; }
+        if( isEven(-2) ) { numCorrect++; }
+        if( isEven(0) ) { numCorrect++; }
 
-        if( !hasG( "man" ) ) { numCorrect++; System.out.println("7");}
-        if( hasG( "dog" ) ) { numCorrect++; System.out.println("8");}
-        if( hasG( "EGGSHELL" ) ) { numCorrect++; System.out.println("9");}
+        if( !hasG( "man" ) ) { numCorrect++; }
+        if( hasG( "dog" ) ) { numCorrect++; }
+        if( hasG( "EGGSHELL" ) ) { numCorrect++;}
 
-        if( indexOfG( "man" ) == -1 ) { numCorrect++; System.out.println("10");}
-        if( indexOfG( "EGGSHELL" ) == 1 ) { numCorrect++; System.out.println("11");}
-        if( indexOfG( "dog" ) == 2 ) { numCorrect++; System.out.println("12");}
-        if( indexOfG( "xyzggGGggG" ) == 3 ) { numCorrect++; System.out.println("13");}
-        if( indexOfG( "xyzGGggGGg" ) == 3 ) { numCorrect++; System.out.println("14");}
+        if( indexOfG( "man" ) == -1 ) { numCorrect++;}
+        if( indexOfG( "EGGSHELL" ) == 1 ) { numCorrect++;}
+        if( indexOfG( "dog" ) == 2 ) { numCorrect++; }
+        if( indexOfG( "xyzggGGggG" ) == 3 ) { numCorrect++; }
+        if( indexOfG( "xyzGGggGGg" ) == 3 ) { numCorrect++; }
 
-        if( respond( "Apple" ).equals( "Orange" ) ) { numCorrect++; System.out.println("15");}
-        if( respond( "Hello" ).equals( "Goodbye!" ) ) { numCorrect++; System.out.println("16");}
-        if( respond( "Turing" ).equals( "Machine" ) ) { numCorrect++; System.out.println("17");}
-        if( respond( "Yay!" ).equals( "\\o/" ) ) { numCorrect++; System.out.println("18");}
-        if( respond( "xyz" ).equals( "What should I say?" ) ) { numCorrect++; System.out.println("19");}
+        if( respond( "Apple" ).equals( "Orange" ) ) { numCorrect++; }
+        if( respond( "Hello" ).equals( "Goodbye!" ) ) { numCorrect++; }
+        if( respond( "Turing" ).equals( "Machine" ) ) { numCorrect++; }
+        if( respond( "Yay!" ).equals( "\\o/" ) ) { numCorrect++; }
+        if( respond( "xyz" ).equals( "What should I say?" ) ) { numCorrect++; }
 
-        if( averageOfEvensOnly(12, 13, 12, 13, 12) == 12.0) { numCorrect++; System.out.println("20");}
-        if( averageOfEvensOnly(-1, 3, -5, 7, 9) == -1000.0) { numCorrect++; System.out.println("21");}
-        if( averageOfEvensOnly(0, 0, 15, 0, -2) == -0.5) { numCorrect++; System.out.println("22");}
-        if( averageOfEvensOnly(100, -3, 4021, -2, 13) == 49.0) { numCorrect++; System.out.println("23");}
+        if( averageOfEvensOnly(12, 13, 12, 13, 12) == 12.0) { numCorrect++; }
+        if( averageOfEvensOnly(-1, 3, -5, 7, 9) == -1000.0) { numCorrect++; }
+        if( averageOfEvensOnly(0, 0, 15, 0, -2) == -0.5) { numCorrect++; }
+        if( averageOfEvensOnly(100, -3, 4021, -2, 13) == 49.0) { numCorrect++;}
 
         // Uncomment these tests AFTER IMPLEMENTING doubleOddSquareEven
-        if( doubleOddSquareEven( 4 ) == 16 ) { numCorrect++; System.out.println("24");}
-        if( doubleOddSquareEven( 3 ) == 6 ) { numCorrect++; System.out.println("25");}
+        if( doubleOddSquareEven( 4 ) == 16 ) { numCorrect++; }
+        if( doubleOddSquareEven( 3 ) == 6 ) { numCorrect++; }
 
-        // Uncomment these tests AFTER IMPLEMENTING computeMealTotal
-        // if( computeMealTotal( 0, .3 ) == -1 ) { numCorrect++; }
-        // if( computeMealTotal( 10, .2 ) == 12.0 ) { numCorrect++; }
-        // if( computeMealTotal( 100, .5 ) == 150 ) { numCorrect++; }
-        // if( computeMealTotal( 100, .71 ) == -1 ) { numCorrect++; }
-        // if( computeMealTotal( 120, .32 ) == 158.4 ) { numCorrect++; }
+         //Uncomment these tests AFTER IMPLEMENTING computeMealTotal
+         if( computeMealTotal( 0, .3 ) == -1 ) { numCorrect++; }
+         if( computeMealTotal( 10, .2 ) == 12.0 ) { numCorrect++; }
+         if( computeMealTotal( 100, .5 ) == 150 ) { numCorrect++; }
+         if( computeMealTotal( 100, .71 ) == -1 ) { numCorrect++; }
+         if( computeMealTotal( 120, .32 ) == 158.4 ) { numCorrect++; }
 
         System.out.println( "Your program's completeness is currently: "
                 + numCorrect + "/30" );
